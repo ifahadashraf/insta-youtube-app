@@ -9447,7 +9447,7 @@ img {
     background-color: #6bd098; }
   .card .image {
     overflow: hidden;
-    height: 200px;
+    height: 300px;
     position: relative; }
   .card .avatar {
     width: 30px;
@@ -9523,9 +9523,14 @@ img {
 .map {
   height: 500px; }
 
-.card-user .image {
-  width: 300px;
-  height: -webkit-calc(100% - 0.75em);
+  .card-user .image {
+    width: 400px;
+  }
+
+.card-user .image img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
   .card-user .image img {
     border-radius: 12px; }
