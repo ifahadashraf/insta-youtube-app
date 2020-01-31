@@ -1,7 +1,7 @@
 import React from "react";
 import avatar from "../boy.svg";
 
-export const ListItem = ({ children }) => (
+export const ListItem = ({ name, comment }) => (
   <div
     style={{
       display: "inline-flex",
@@ -16,6 +16,9 @@ export const ListItem = ({ children }) => (
         marginRight: "15px"
       }}
     />
-    <p>{children}</p>
+    <div>
+      <p>{name}</p>
+      <label>{comment}</label>
+    </div>
   </div>
 );

@@ -65,10 +65,6 @@ function App() {
           <Row>
             {data.data && data.data.length
               ? data.data.map(item => {
-                  // setComments({
-                  //   ...comments,
-                  //   [item.node.taken_at_timestamp]: []
-                  // });
                   if (item.node.__typename === "GraphImage") {
                     return (
                       <Col md="6">
@@ -104,7 +100,7 @@ function App() {
                                 comments[item.node.taken_at_timestamp].map(
                                   val => (
                                     <li>
-                                      <ListItem>{val}</ListItem>
+                                      <ListItem name="John Doe" comment={val} />
                                     </li>
                                   )
                                 )}
