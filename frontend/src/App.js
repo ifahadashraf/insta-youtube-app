@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import InstagramEmbed from "react-instagram-embed";
+import { ListItem } from "./components/list-item";
 import "./App.css";
 import "./css/paper-dashboard.css";
 // reactstrap components
@@ -81,33 +83,14 @@ function App() {
                               width: "400px"
                             }}
                           >
-                            <div className="image">
-                              <img alt="..." src={item.node.display_url} />
-                            </div>
-                            <div>
-                              <Button
-                                className="btn-round"
-                                color="primary"
-                                outline
-                              >
-                                <i className="fa fa-heart" />
-                                {item.node.edge_liked_by.count}
-                              </Button>
-                              <Button
-                                className="btn-round"
-                                color="primary"
-                                outline
-                              >
-                                <i className="fa fa-comment" />
-                                {item.node.edge_media_to_comment.count}
-                              </Button>
-                            </div>
-                            <p className="description text-center">
-                              {
-                                item.node.edge_media_to_caption.edges[0].node
-                                  .text
-                              }
-                            </p>
+                            <InstagramEmbed
+                              url={`https://instagr.am/p/${item.node.shortcode}/`}
+                              maxWidth={400}
+                              hideCaption={false}
+                              containerTagName="div"
+                              protocol=""
+                              injectScript
+                            />
                           </CardBody>
                           <CardFooter>
                             <hr />
@@ -121,7 +104,7 @@ function App() {
                                 comments[item.node.taken_at_timestamp].map(
                                   val => (
                                     <li>
-                                      <p>{val}</p>
+                                      <ListItem>{val}</ListItem>
                                     </li>
                                   )
                                 )}
