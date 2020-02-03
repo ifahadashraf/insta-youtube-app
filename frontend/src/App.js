@@ -113,7 +113,7 @@ function App() {
                             >
                               <Input
                                 type="text"
-                                placeholder="Wirte something..."
+                                placeholder="Write something..."
                                 style={{
                                   marginRight: "15px",
                                   width: "340px"

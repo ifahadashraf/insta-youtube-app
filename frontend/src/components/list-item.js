@@ -7,18 +7,44 @@ import { Comment } from "./ui/comment";
 import { TimeStamp } from "./ui/time-stamp";
 import { Like } from "./ui/like";
 import { ReplyBox } from "./ui/reply-box";
-import { Label } from "reactstrap";
+import { Label, Media } from "reactstrap";
 
 const Li = styled.li`
   display: flex;
+  margin-top:5px;
   img {
-    flex: 0.15;
+    flex: 0.35;
   }
-  .header {
-    display: flex;
-    flex: 0.7;
-    p {
+  .media-section{
+    width: 74%;
+    padding: 0 10px;
+    .comment{
+      float: left;
+      font-size: 14px;
+      width: 100%;
+      text-align: left;
+      color: #000000;  
+    }
+    .reply{
+      width: 100%;
+      float: left;
+      text-align: left;
+      font-size: 10px;
+    }
+  }
+  .header{
+    width: 100%;
+    float: left;
+    p{
       margin: 0;
+      span{
+        float: left;
+        color: #51cbce;
+        font-weight: bold;
+      }
+      small{
+        float: right;
+      }
     }
   }
 `;
@@ -32,13 +58,12 @@ export const ListItem = ({ name, comment, time }) => {
   return (
     <Li>
       <Avatar src={avatar} />
-      <div>
+      <div className="media-section">
         <div className="header">
-          <p>{name}</p>
-          <TimeStamp time={time} />
+          <p><span>{name}</span> <small><TimeStamp time={time} /></small></p>
         </div>
-        <Comment>{comment}</Comment>
-        <Label onClick={() => setState({ ...state, isReplyOpen: true })}>
+        <Comment className="comment">{comment}</Comment>
+        <Label onClick={() => setState({ ...state, isReplyOpen: true })} className="reply">
           Reply...
         </Label>
         <ReplyBox

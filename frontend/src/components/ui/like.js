@@ -5,7 +5,8 @@ import "../../css/paper-dashboard.css";
 export const Like = ({ isLiked, ...rest }) => (
   <Button
     className="btn-round btn-icon"
-    color="primary"
+    color="danger"
+    size="sm"
     outline={!isLiked}
     {...rest}
   >
