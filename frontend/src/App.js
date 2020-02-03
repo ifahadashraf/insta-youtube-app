@@ -16,7 +16,8 @@ import {
   Input,
   Row,
   Col,
-  Nav
+  Nav,
+  Container
 } from "reactstrap";
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
 
   return (
     <div className="App">
-      <>
+      <Container>
         <div className="content">
           <Card
             style={{
@@ -90,17 +91,16 @@ function App() {
                           </CardBody>
                           <CardFooter>
                             <hr />
-                            <ul
-                              style={{
-                                listStyle: "none",
-                                textAlign: "left"
-                              }}
-                            >
+                            <ul className="list-unstyled team-members">
                               {comments[item.node.taken_at_timestamp] &&
                                 comments[item.node.taken_at_timestamp].map(
                                   val => (
                                     <li>
-                                      <ListItem name="John Doe" comment={val} />
+                                      <ListItem
+                                        name="John Doe"
+                                        comment={val}
+                                        time={new Date().getTime()}
+                                      />
                                     </li>
                                   )
                                 )}
@@ -154,7 +154,7 @@ function App() {
               : "No data available"}
           </Row>
         </div>
-      </>
+      </Container>
     </div>
   );
 }
