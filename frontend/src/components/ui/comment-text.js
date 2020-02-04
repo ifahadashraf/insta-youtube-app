@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Label } from "reactstrap";
 
-export const Comment = styled(Label)`
+export const CommentText = styled(Label)`
   margin: 0;
 `;

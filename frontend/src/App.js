@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import InstagramEmbed from "react-instagram-embed";
-import { ListItem } from "./components/list-item";
+import { Comment } from "./components/comment";
 import "./App.css";
 import "./css/paper-dashboard.css";
 // reactstrap components
@@ -19,6 +19,7 @@ import {
   Nav,
   Container
 } from "reactstrap";
+import { TextBox } from "./components/ui/text-box";
 
 function App() {
   const [data, setData] = useState({});
@@ -91,60 +92,37 @@ function App() {
                           </CardBody>
                           <CardFooter>
                             <hr />
-                            <ul className="list-unstyled team-members">
+                            <ul>
                               {comments[item.node.taken_at_timestamp] &&
-                                comments[item.node.taken_at_timestamp].map(
-                                  val => (
-                                    <li>
-                                      <ListItem
-                                        name="John Doe"
-                                        comment={val}
-                                        time={new Date().getTime()}
-                                      />
-                                    </li>
-                                  )
-                                )}
+                                comments[
+                                  item.node.taken_at_timestamp
+                                ].map(val => (
+                                  <Comment
+                                    name="John Doe"
+                                    comment={val}
+                                    time={new Date().getTime()}
+                                  />
+                                ))}
                             </ul>
-                            <div
-                              style={{
-                                display: "inline-flex",
-                                paddingBottom: "10px"
+                            <TextBox
+                              placeholder="Comment here..."
+                              onClick={text => {
+                                const stateToSave = {
+                                  ...comments
+                                };
+                                if (comments[item.node.taken_at_timestamp]) {
+                                  stateToSave[
+                                    item.node.taken_at_timestamp
+                                  ].push(text);
+                                } else {
+                                  stateToSave[item.node.taken_at_timestamp] = [
+                                    text
+                                  ];
+                                }
+                                setComment("");
+                                setComments(stateToSave);
                               }}
-                            >
-                              <Input
-                                type="text"
-                                placeholder="Write something..."
-                                style={{
-                                  marginRight: "15px",
-                                  width: "340px"
-                                }}
-                                onChange={e => setComment(e.target.value)}
-                                value={comment}
-                              />
-                              <Button
-                                className="btn-round btn-icon"
-                                color="primary"
-                                onClick={() => {
-                                  const stateToSave = {
-                                    ...comments
-                                  };
-                                  if (comments[item.node.taken_at_timestamp]) {
-                                    stateToSave[
-                                      item.node.taken_at_timestamp
-                                    ].push(comment);
-                                  } else {
-                                    stateToSave[
-                                      item.node.taken_at_timestamp
-                                    ] = [comment];
-                                  }
-
-                                  setComment("");
-                                  setComments(stateToSave);
-                                }}
-                              >
-                                <i className="fa fa-send" />
-                              </Button>
-                            </div>
+                            />
                           </CardFooter>
                         </Card>
                       </Col>

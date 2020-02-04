@@ -9468,6 +9468,7 @@ img {
     color: #9A9A9A; }
   .card .card-footer {
     background-color: transparent;
+    padding-bottom: 20px;
     border: 0; }
     .card .card-footer .stats i {
       margin-right: 5px;
@@ -16100,3 +16101,14 @@ This file was modified entirely by Creative Tim for React-Select v2.0.0
     border-color: #FFFFFF;
     background-color: #FFFFFF;
     color: inherit; }
+.comment-options {
+  z-index: 999;
+  width: 50%;
+}
+
+.options-button {
+  padding: 8px;
+  margin: 0;
+  background: transparent;
+  color: gray;
+}
